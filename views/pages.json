@@ -1,0 +1,49 @@
+{
+  "tags": {
+    "404": {
+      "shortname": "404",
+      "color": "#008000"
+    },
+    "MikeyLore": {
+      "shortname": "MLR",
+      "color": "#0080ff"
+    },
+    "Avalonian Vineyards": {
+      "shortname": "AVY",
+      "color": "#35ff00"
+    },
+    "Avalonian Districts": {
+      "shortname": "M+A",
+      "color": "#1BC080"
+    },
+    "Meta": {
+      "shortname": "//",
+      "color": "#808080"
+    }
+  },
+  "pages": {
+    "Sandbox": {
+      "tags": [
+        "Avalonian Districts", 
+        "Meta"
+      ],
+      "color": "#808080",
+      "link": {
+        "redirect": false,
+        "location": "articles/Sandbox"
+      }
+    },
+    "404_Not_Found": {
+      "tags": [
+        "Meta",
+        "404"
+      ],
+      "hidden": true,
+      "color": "#000000",
+      "link": {
+        "redirect": false,
+        "location": "articles/404"
+      }
+    }
+  }
+}

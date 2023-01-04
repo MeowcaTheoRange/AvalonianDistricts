@@ -1,0 +1,12 @@
+:root {
+  --main: #35FF00;
+  --main-fg: #0D4F00;
+  --secondary: #2ACC00;
+  --general-bg: #4F4F4F;
+  --general-fg: #808080;
+  --bg-transparency: #4F4F4F80;
+  --background-image: url(/assets/goo.png);
+  --page-bg: #000000AA;
+  --page-fg: #D8FFCC;
+  --tag-fg: #FFFFFF;
+}

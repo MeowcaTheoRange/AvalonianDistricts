@@ -1,0 +1,15 @@
+<div class="fullwidthlink <%- jsony.link.redirect ? "showsearch" : "" %>" style="background-color: <%- jsony.color ?? "var(--bg)" %>;">
+  <% if (!jsony.link.redirect) { %>
+  <div class="taglist">
+    <% jsony.tags.forEach(function(tagname){ %>
+      <%- include("tag", {
+        implcl: locals,
+        tagname
+      }) %>
+    <% }); %>
+  </div>
+  <% } %>
+  <a class="linkname" href="/wiki/<%- namey %>">
+    <%- namey.replace(/_/g, " ") %> <%- jsony.link.redirect ? ("|=> " + jsony.link.location.replace(/_/g, " ")) : "" %>
+  </a>
+</div>

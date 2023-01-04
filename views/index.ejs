@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html class="<%- page.tags.join(' ') %>">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/a/system/main.css">
+    <link rel="stylesheet" href="/a/system/page.css">
+    <link rel="stylesheet" href="/assets/theme.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;400;600&display=swap" rel="stylesheet"> 
+  </head>
+  <body>
+    <div id="header">
+      <button class="menubutton" onclick="toggleSidebar()">&lt;|</button>
+      <span class="title">Avalonian Districts <span class="hideonmobile">Wiki</span></span>
+    </div>
+    <div id="body">
+      <div id="sidebar">
+        <div id="sbheader">
+          <input type="text" id="searchbar" placeholder="Type here to search..." />
+          <button class="overinput"></button>
+          <button class="clearinput">X</button>
+        </div>
+        <div id="searchNodes">
+        <% Object.entries(all.pages).forEach(function([namey, jsony]){ %>
+          <% if (!jsony.hidden) { %>
+            <%- include('system/fullwidth', {namey,jsony,tags:all.tags}); %>
+          <% } %>
+        <% }); %>
+        </div>
+      </div>
+      <div id="index">
+        <div id="inheader">
+          <span id="headertext"><%- name.replace(/_/g, " ") %></span>
+          <div class="taglist">
+          <% page.tags.forEach(function(tagname){ %>
+            <%- include("system/tag", {
+              implcl: locals,
+              tagname
+            }) %> 
+          <% }); %>
+          </div>
+        </div>
+        <div id="page">
+          <%- include(page.link.location); %>
+        </div>
+      </div>
+    </div>
+    <script src="/a/system/searchNodes.js"></script>
+  </body>
+</html>

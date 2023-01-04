@@ -1,0 +1,327 @@
+body, html {
+  min-width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: "JetBrains Mono", monospace;
+  overflow: hidden;
+  font-size: 18px;
+}
+
+body {
+  display: grid;
+  grid-template-rows: 48px calc(100vh - 48px);
+}
+
+#header {
+  background-color: var(--main);
+  color: var(--main-fg);
+  font-weight: bold;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 16px;
+  gap: 16px;
+}
+
+#header .menubutton {
+  background-color: var(--main);
+  color: var(--main-fg);
+  font-weight: bold;
+  border: none;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 18px;
+  height: 32px;
+  cursor: pointer;
+}
+
+#body {
+  background-color: var(--general-bg);
+  display: grid;
+  grid-template-columns: 400px auto;
+  grid-template-rows: 100%;
+  height: 100%;
+}
+
+#body #sidebar {
+  background-color: var(--secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  box-sizing: border-box;
+  padding: 8px 0;
+  gap: 8px;
+  height: 100%;
+  width: 400px;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#body #sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+#body #sidebar #searchNodes {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  box-sizing: border-box;
+  gap: 8px;
+}
+
+#sbheader, #inheader {
+  background-color: var(--main);
+  height: 48px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px;
+  gap: 8px;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+}
+
+#inheader {
+  top: 8px;
+}
+
+#inheader #headertext {
+  width: 100%;
+}
+
+#index {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 0 0 0;
+  gap: 8px;
+  overflow: auto;
+  height: 100%;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  background-image: linear-gradient(0deg, var(--bg-transparency) 0%, var(--bg-transparency) 100%), var(--background-image);
+  background-repeat: repeat-y;
+}
+
+#index::-webkit-scrollbar {
+  display: none;
+}
+
+#page {
+  display: inline-block;
+  margin: 8px 64px;
+  background-color: var(--page-bg);
+  height: max-content;
+  overflow-y: visible;
+  color: var(--page-fg);
+  padding: 16px;
+  transition: margin 0.25s;
+}
+
+.fullwidthlink {
+  background-color: var(--main);
+  height: 48px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px;
+  gap: 8px;
+  box-sizing: border-box;
+  color: var(--page-fg);
+  font-weight: bold;
+  height: 48px;
+}
+
+.fullwidthlink .linkname {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--page-fg);
+  height: 100%;
+  width: 100%;
+  line-height: 32px;
+}
+
+.taglist {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.tagLabel {
+  display: inline-block;
+  width: 48px;
+  height: 32px;
+  text-align: center;
+  border-radius: 32px;
+  font-weight: bold;
+  border: 2px solid var(--tag-fg);
+  color: var(--tag-fg);
+  font-size: 18px;
+  padding: 0;
+  font-family: "JetBrains Mono", monospace;
+  user-select: none;
+  cursor: pointer;
+}
+
+#sidebar .showsearch {
+  display: none;
+}
+
+#sidebar .isSearching .showsearch {
+  display: flex;
+}
+
+#sbheader input {
+  width: calc(100% - 30px);
+  height: 32px;
+  padding: 8px;
+  box-sizing: border-box;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 18px;
+  border: 2px var(--general-fg) solid;
+  background-color: var(--general-bg);
+  color: var(--tag-fg);
+  border-radius: 8px 0 0 8px;
+}
+
+#sbheader input:focus, #sbheader .overinput:focus, #sbheader .clearinput:focus {
+  outline: 2px solid white;
+}
+
+#sbheader input:focus ~ .clearinput, #sbheader .overinput:focus ~ .clearinput {
+  outline: 2px solid white;
+}
+
+#sbheader .overinput {
+  width: calc(400px - 46px);
+  display: none;
+  height: 32px;
+  padding: 0 8px;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 18px;
+  border: 2px var(--general-fg) solid;
+  background-color: var(--general-bg);
+  color: var(--tag-fg);
+  border-radius: 8px 0 0 8px;
+  position: absolute;
+  cursor: text;
+}
+
+#sbheader .clearinput {
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 18px;
+  border-radius: 0 8px 8px 0;
+  color: var(--general-bg);
+  background-color: var(--general-bg);
+  border: 2px var(--general-fg) solid;
+  position: absolute;
+  right: 8px;
+  cursor: default;
+  transition: color 0.25s;
+}
+
+#sbheader.isSearching .clearinput {
+  cursor: pointer;
+  color: var(--tag-fg);
+}
+
+#sbheader #searchbar:focus ~ .overinput {
+  display: none !important;
+}
+
+#sbheader input::placeholder {
+  color: var(--general-fg);
+}
+
+.menubutton {
+  display: none;
+}
+
+#sidebar {
+  position:relative;
+  left: 0;
+  transition: left 0.25s, width 0.25s;
+}
+#sidebar .overinput {
+  transition: left 0.25s, width 0.25s;
+}
+#body {
+  transition: grid-template-columns 0.25s;
+}
+
+@media only screen and (max-width: 1000px) {
+  .menubutton {
+    display: inline-block;
+  }
+
+  #sidebar {
+    left: -800px;
+    width: 300px !important;
+    z-index: 9;
+  }
+
+  #sbheader .overinput {
+    width: calc(300px - 46px) !important;
+  }
+
+  #body {
+    grid-template-columns: 0px auto;
+  }
+
+  #body.sidebarOpen {
+    grid-template-columns: 300px auto;
+  }
+  #body.sidebarOpen #sidebar {
+    position:relative;
+    left: 0;
+  }
+  #page {
+    margin: 0 8px;
+    margin-top: 8px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .hideonmobile {
+    display: none;
+  }
+
+  #sidebar {
+    left: -800px !important;
+    width: 100vw !important;
+  }
+
+  #sidebar .overinput {
+    width: calc(100vw - 46px) !important;
+  }
+
+  #body {
+    grid-template-columns: 0px auto;
+  }
+
+  #body.sidebarOpen {
+    grid-template-columns: 0px auto;
+  }
+
+  #sidebar, #sidebar .overinput {
+    transition: left 0.25s, width 0s !important;
+  }
+
+  #body.sidebarOpen #sidebar {
+    left: 0 !important;
+  }
+}
